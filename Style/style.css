@@ -843,6 +843,23 @@
   transform: scale(1.02);
   filter: brightness(0.88);
 }
+.lot-read-row {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  gap: 24px;
+  align-items: center;
+}
+.lot-read-row h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.8vw, 2rem);
+  line-height: 1.15;
+}
+.lot-read-row img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .page-arbeiten-special .link-underline { border-color: var(--accent-green); }
 .page-arbeiten-special .link-underline:hover { border-color: var(--accent-blue); }
 
@@ -854,6 +871,7 @@
 @media (max-width: 900px){
   .page-arbeiten .work-card { grid-template-columns: 1fr; }
   .page-arbeiten .work-section + .work-section { margin-top: clamp(40px, 7vw, 72px); }
+  .lot-read-row { grid-template-columns: 1fr; }
 }
 
 /* ===== Intro Text ===== */
