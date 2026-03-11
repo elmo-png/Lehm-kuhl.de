@@ -1,0 +1,19 @@
+<svg width="120" height="55" viewBox="0 0 120 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Großes cleanes E -->
+  <text x="12" y="38"
+        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+        font-size="42"
+        font-weight="800"
+        fill="#6D8B74"
+        letter-spacing="2">
+    E
+  </text>
+  <!-- Geschwungene, hügelige Linie unten als Notiz/ECG/Berg -->
+  <path d="M26 44
+           Q36 48 46 44
+           Q54 40 62 44
+           Q69 48 85 42
+           Q97 38 108 44"
+        stroke="#E9B93E" stroke-width="3" fill="none"
+        style="filter: drop-shadow(0 1px 1px #fafafa);" />
+</svg>
