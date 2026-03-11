@@ -523,6 +523,7 @@
     grid-template-columns: 240px 1fr;
     gap:20px;
     padding:18px 0;
+    align-items:stretch;
   }
 .work-card-media{
   width:100%;
@@ -534,6 +535,7 @@
   .work-card img{
     width:100%; height:160px; object-fit:cover;
     border-radius:0;
+    display:block;
   }
 .work-card video,
 .work-card iframe{
@@ -543,6 +545,27 @@
   object-fit:cover;
   display:block;
   background:#000;
+}
+.work-card > div,
+.work-card .work-content{
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.work-card h3{
+  margin:0 0 auto;
+  padding-bottom:8px;
+  line-height:1.18;
+  flex-shrink:0;
+}
+.work-card p{
+  margin:0 0 10px;
+  line-height:1.45;
+  flex-shrink:0;
+}
+.work-card a.link-underline{
+  flex-shrink:0;
+  width:max-content;
 }
   .link-underline{
     color:var(--link);
