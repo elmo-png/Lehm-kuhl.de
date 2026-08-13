@@ -2,6 +2,8 @@
     --bg:#ffffff;
     --text:#111111;
     --muted:#666666;
+  --font-editorial:"Instrument Serif", Georgia, serif;
+  --font-ui:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   
     --accent-yellow:#E9B93E;   /* warmes Gelb */
     --accent-blue:#7FA7C0;     /* helles, abgetöntes Blau */
@@ -16,8 +18,9 @@
   
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
+  img, video, iframe{max-width:100%}
   body{
-    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-family: var(--font-ui);
     background:var(--bg);
     color:var(--text);
     line-height:1.6;
@@ -65,6 +68,8 @@
     text-decoration:none;
     position:relative;
     padding:6px 0;
+    font-size:15px;
+    line-height:1.2;
     font-weight:500;
   }
   .site-nav a::after{
@@ -110,8 +115,7 @@
   overflow:hidden;
 }
   .hero.hero-left{
-    margin-left:0 auto; /*Zentriert*/ ;
-    margin-right:auto;
+    margin: 0 auto;
     justify-items:start;
   }
   .hero.hero-left .hero-text{
@@ -133,19 +137,19 @@
     z-index:0;
     filter:saturate(90%) contrast(98%);
   }
-  /* Bild weiter unten positionieren */
+  /* Möwen-Slide: ganzes Bild zeigen, ohne seitlichen Beschnitt */
   .hero-slider a:nth-child(3) .hero-slide {
-    object-position: center 25%; /* Bild 25% von oben positionieren */
-    /* Alternativ: transform: translateY(20px); */
+    object-fit: contain;
+    object-position: center center;
+    background: #fff;
   }
 
-/* Für kleine Bildschirme (z.B. max. 600px Breite) */
-@media (max-width: 600px) {
-  .hero-slider a:nth-child(3) .hero-slide {
-    object-position: center center; /* normale Positionierung */
-    /* oder transform zurücksetzen: transform: translateY(0); */
+  /* ZDF-Slide: Bildausschnitt im bestehenden Slider-Format feinjustieren */
+  .hero-slider a:nth-child(5) .hero-slide {
+    object-fit: contain;
+    object-position: center center;
+    background: #fff;
   }
-}
 
   .hero-slider a:nth-child(1) .hero-slide{ animation-delay:0s }
   .hero-slider a:nth-child(2) .hero-slide{ animation-delay:4s }
@@ -190,6 +194,18 @@
       inset:0;
     }
   }
+
+  /* Startseite: vertikaler Rhythmus zwischen Vorstellung, Hero und Fokus-Cards */
+  .page-home main > .content:first-child {
+    padding-bottom: clamp(20px, 3.5vw, 36px);
+  }
+  .page-home .hero {
+    margin-top: clamp(56px, 8vw, 88px);
+    margin-bottom: clamp(72px, 10vw, 116px);
+  }
+  .page-home .focus-grid .content {
+    padding-top: clamp(6px, 1.5vw, 16px);
+  }
   
   /* Content Wrapper */
   .content{
@@ -223,6 +239,16 @@
     margin-top:8px;
     color:var(--muted);
     font-size:14px;
+  }
+
+  .about-text h1,
+  .contact h1 {
+    font-family: var(--font-editorial);
+    font-size: clamp(38px, 5.2vw, 54px);
+    line-height: 0.98;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 20px;
   }
   
 /* Works */
@@ -346,24 +372,35 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
+  width: 150px;
+  height: 150px;
+  border-radius: 0;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 36px;
-  color: #fff;
+  font-size: 0;
+  color: transparent;
   z-index: 4;
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-  transition: background .25s ease, transform .25s ease;
+  box-shadow: none;
+  transition: border-color .25s ease, transform .25s ease;
+}
+.work-video-play::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 36px 0 36px 58px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 10px;
 }
 
 .work-video-hero:hover .work-video-play {
-  background: rgba(0, 0, 0, 0.6);
-  transform: translate(-50%, -50%) scale(1.08);
+  border-color: #fff;
+  transform: translate(-50%, -50%) scale(1.06);
 }
 
 .work-video-tag {
@@ -566,7 +603,25 @@
 .work-card a.link-underline{
   flex-shrink:0;
   width:max-content;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
 }
+
+.links-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  width: max-content;
+}
+
+.link-separator {
+  color: #fff;
+  font-weight: normal;
+}
+
   .link-underline{
     color:var(--link);
     text-decoration:none;
@@ -582,6 +637,14 @@
 
   
   /* Contact */
+  .kontakt-bild {
+    margin-top: 32px;
+  }
+  .kontakt-bild img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
   .contact-form{
     display:grid;
     gap:14px;
@@ -619,6 +682,24 @@
     color:var(--muted);
     text-align:center;
   }
+  .linkedin-icon{
+    vertical-align:middle;
+    margin-right:6px;
+  }
+    .site-footer p{
+      margin:0;
+      overflow-wrap:anywhere;
+    }
+
+  .legal-divider{
+    border:0;
+    border-top:1px solid #eee;
+    margin:24px 0;
+  }
+  .legal-note{
+    color:var(--muted);
+    font-size:14px;
+  }
   
   /* Responsive */
   @media (max-width: 900px){
@@ -640,6 +721,8 @@
       gap:8px;
       transform:translateY(-10px);
       opacity:0; pointer-events:none;
+      max-height:calc(100vh - 88px);
+      overflow:auto;
       transition:opacity .2s ease, transform .2s ease;
     }
     .nav-toggle{ display:flex }
@@ -649,6 +732,7 @@
     .site-header.nav-open .burger{ transform:rotate(45deg) }
     .site-header.nav-open .burger::before{ transform:rotate(90deg) translateX(-6px) }
     .site-header.nav-open .burger::after{ opacity:0 }
+    .site-footer p{ font-size:14px; line-height:1.7; }
   }
   /* Schwerpunkt-Grid */
 .focus-grid{
@@ -738,8 +822,10 @@
 }
 .focus-body h3{
   margin:0;
+  font-family: var(--font-editorial);
   font-size:clamp(24px, 2.6vw, 34px);
-  letter-spacing:0.5px;
+  font-weight: 600;
+  letter-spacing:-0.01em;
   text-transform:uppercase;
 }
 .focus-body p{
@@ -810,6 +896,14 @@
 .page-arbeiten-schreiben .works h1 { color: #fff; }
 .page-arbeiten-schreiben .work-card img { filter: saturate(95%); }
 .page-arbeiten-schreiben .link-underline { border-color: var(--accent-blue); }
+.page-arbeiten-schreiben .work-card + .work-card { margin-top: 40px; }
+.page-arbeiten-schreiben .video-banner-caption { margin-bottom: 46px; }
+.page-arbeiten-schreiben .video-banner-caption h3 { margin-bottom: 8px; }
+.page-arbeiten-schreiben .author-profile {
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+.page-arbeiten-schreiben .work-section + .work-section { margin-top: clamp(64px, 9vw, 80px); }
 
 /* ===== Arbeiten > KI ===== */
 .page-arbeiten-ki .works h1 { color: #fff; }
@@ -886,15 +980,138 @@
 .page-arbeiten-special .link-underline { border-color: var(--accent-green); }
 .page-arbeiten-special .link-underline:hover { border-color: var(--accent-blue); }
 
+.page-arbeiten-special .works > p .link-underline,
+.page-arbeiten-special .work-card .link-underline {
+  border-color: var(--accent-yellow);
+}
+.page-arbeiten-special .works > p .link-underline:hover,
+.page-arbeiten-special .work-card .link-underline:hover {
+  border-color: var(--accent-blue);
+}
+
+.page-arbeiten-special .lot-read-row .link-underline {
+  border-color: var(--accent-yellow);
+}
+.page-arbeiten-special .lot-read-row .link-underline:hover {
+  border-color: var(--accent-blue);
+}
+
+/* ── Special Interest: Abstände ── */
+.page-arbeiten-special .lot-banner {
+  margin-bottom: 48px;
+}
+.page-arbeiten-special .work-card + .work-card {
+  margin-top: 40px;
+}
+.page-arbeiten-special .lot-read-row {
+  margin-top: 64px;
+  gap: 40px;
+}
+.page-arbeiten-special .lot-read-row h2 {
+  margin-bottom: 0;
+}
+
 /* Beispiel für layout-spezifische Differenzen */
 .page-arbeiten-schreiben .work-card { grid-template-columns: 280px 1fr; }
 .page-arbeiten-ki .work-card { grid-template-columns: 240px 1fr; }
 .page-arbeiten-special .work-card { grid-template-columns: 300px 1fr; }
 
+.page-arbeiten-schreiben .works > h1,
+.page-arbeiten-ki .works > h1,
+.page-arbeiten-special .works > h1 {
+  font-family: var(--font-editorial);
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+}
+
+.page-arbeiten-schreiben h2,
+.page-arbeiten-ki h2,
+.page-arbeiten-special h2 {
+  font-family: var(--font-editorial);
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+.page-arbeiten-schreiben h3,
+.page-arbeiten-ki h3,
+.page-arbeiten-special h3 {
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.page-arbeiten-schreiben .work-card p,
+.page-arbeiten-ki .work-card p,
+.page-arbeiten-special .work-card p {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.page-arbeiten-schreiben .article-hero-title {
+  font-family: var(--font-editorial);
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  max-width: 72%;
+}
+
 @media (max-width: 900px){
   .page-arbeiten .work-card { grid-template-columns: 1fr; }
   .page-arbeiten .work-section + .work-section { margin-top: clamp(40px, 7vw, 72px); }
   .lot-read-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px){
+  .site-nav a{ font-size:14px; }
+
+  .page-arbeiten-schreiben .work-card + .work-card { margin-top: 32px; }
+  .page-arbeiten-schreiben .video-banner-caption { margin-bottom: 36px; }
+  .page-arbeiten-schreiben .author-profile {
+    margin-top: 18px;
+    margin-bottom: 32px;
+  }
+  .page-arbeiten-schreiben .work-section + .work-section { margin-top: 48px; }
+
+  .page-arbeiten-special .work-card + .work-card { margin-top: 28px; }
+  .page-arbeiten-special .lot-banner { margin-bottom: 32px; }
+  .page-arbeiten-special .lot-read-row { margin-top: 40px; gap: 24px; }
+
+  .page-arbeiten-schreiben .works > h1,
+  .page-arbeiten-ki .works > h1,
+  .page-arbeiten-special .works > h1 {
+    font-size: 44px;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+  }
+
+  .page-arbeiten-schreiben h2,
+  .page-arbeiten-ki h2,
+  .page-arbeiten-special h2 {
+    font-size: 34px;
+    line-height: 1.05;
+  }
+
+  .page-arbeiten-schreiben h3,
+  .page-arbeiten-ki h3,
+  .page-arbeiten-special h3 { font-size: 21px; }
+
+  .page-arbeiten-schreiben .work-card p,
+  .page-arbeiten-ki .work-card p,
+  .page-arbeiten-special .work-card p { font-size: 17px; }
+
+  .page-arbeiten-schreiben .article-hero-title {
+    font-size: 44px;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    max-width: 100%;
+  }
 }
 
 /* ===== Intro Text ===== */
@@ -958,6 +1175,67 @@
   color: #fff;
 }
 
+/* Video-Banner: Vollbild-Vorschau ohne Textoverlay, Caption darunter */
+.article-hero.video-banner {
+  height: auto;
+  margin-bottom: 16px;
+  overflow: visible;
+}
+.article-hero.video-banner .article-hero-bg {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center center;
+  transform: none;
+  filter: none;
+}
+.article-hero.video-banner:hover .article-hero-bg {
+  transform: none;
+  filter: none;
+}
+.article-hero.video-banner .article-hero-overlay {
+  display: none;
+}
+.article-hero.video-banner:hover .work-video-play {
+  border-color: #fff;
+  transform: translate(-50%, -50%) scale(1.06);
+}
+.video-banner-caption {
+  margin-bottom: 32px;
+}
+.video-banner-caption h3 {
+  margin: 0 0 4px;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+}
+.video-banner-caption p {
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+}
+
+.page-arbeiten-schreiben .video-banner-caption h3 {
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.page-arbeiten-schreiben .video-banner-caption p {
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 400;
+  max-width: 78ch;
+}
+
+.author-profile {
+  font-size: 1.1rem;
+  margin-left: calc(6px);
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+
 /* Iran-Header: ganzen Block höher, Text wieder normal */
 .iran-header {
   margin-top: -3.2em;
@@ -995,6 +1273,10 @@
 @media (max-width: 900px) {
   .article-hero {
     height: 380px;
+  .work-video-play::before {
+    border-width: 14px 0 14px 22px;
+    margin-left: 4px;
+  }
   }
   .article-hero-content {
     padding: 36px;
@@ -1028,6 +1310,14 @@
   .article-hero-excerpt {
     max-width: 100%;
     font-size: 14px;
+  }
+
+  .page-arbeiten-schreiben .video-banner-caption h3 {
+    font-size: 21px;
+  }
+
+  .page-arbeiten-schreiben .video-banner-caption p {
+    font-size: 18px;
   }
 }
 
@@ -1166,4 +1456,13 @@
     max-height: 78vh;
   }
 }
+
+.legal h1 {
+    font-family: var(--font-editorial);
+    font-size: clamp(38px, 5.2vw, 54px);
+    line-height: 0.98;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 20px;
+  }
 
