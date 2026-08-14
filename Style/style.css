@@ -257,12 +257,18 @@
     letter-spacing: -0.015em;
     margin: 0 0 20px;
   }
-  .contact-icon {
+  .page-kontakt .contact h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-icon {
   width: 0.9em;
   height: 0.9em;
-  margin-left: 8px;
-  vertical-align: middle;
-  }
+  object-fit: contain;
+  display: block;
+}
 
 /* Works */
 .works h1 { margin-top: 0; }
