@@ -868,7 +868,7 @@
 
   /* Nur KI-Karte: Bildausschnitt auf Mobilgeräten verschieben */
   .focus-card:nth-child(2) .focus-media img{
-    object-position:65% 70%;
+    object-position:65% 35%;
   }
 }
 
@@ -1031,6 +1031,10 @@
 /* ===== Kontakt ===== */
 .page-kontakt { 
   background: var(--accent-yellow); 
+}
+.page-kontakt .link-underline:hover {
+  color: var(--accent-green);
+  border-color: var(--accent-green);
 }
 
 /* Beispiel für layout-spezifische Differenzen */
