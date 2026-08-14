@@ -264,10 +264,17 @@
 }
 
 .contact-icon {
-  width: 0.9em;
-  height: 0.9em;
+  width: 0.45em;
+  height: 0.45em;
   object-fit: contain;
   display: block;
+}
+
+@media (max-width: 720px) {
+  .contact-icon {
+    width: 0.9em;
+    height: 0.9em;
+  }
 }
 
 /* Works */
@@ -880,7 +887,7 @@
 
   /* Nur KI-Karte: Bildausschnitt auf Mobilgeräten verschieben */
   .focus-card:nth-child(2) .focus-media img{
-    object-position:65% 15%;
+    object-position:65% 25%;
   }
 }
 
