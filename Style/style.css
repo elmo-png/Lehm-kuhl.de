@@ -1275,7 +1275,7 @@
     height: 380px;
   .work-video-play::before {
     border-width: 14px 0 14px 22px;
-    margin-left: 4px;
+    margin-left: 0px;
   }
   }
   .article-hero-content {
@@ -1305,7 +1305,7 @@
   .iran-header.article-hero .article-hero-content {
     padding: 24px;
     justify-content: flex-end;
-    padding-bottom: 32px;
+    padding-bottom: 20px;
   }
   .article-hero-title {
     font-size: clamp(20px, 3.5vw, 28px);
