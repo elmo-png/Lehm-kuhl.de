@@ -184,28 +184,23 @@
     color:#fff;
     font-size:clamp(18px, 2.5vw, 26px);
   }
-  @media (max-width: 720px){
-    .hero{
-      margin:clamp(24px, 6vw, 60px) var(--pad);
-      padding:0;
-      min-height:clamp(360px, 72vh, 520px);
-    }
-    .hero-slider{
-      inset:0;
-    }
-  }
-  @media (max-width: 720px) {
-  .hero {
-    min-height: clamp(260px, 52vh, 420px);
+@media (max-width: 720px){
+  .hero{
+    margin:clamp(24px, 6vw, 60px) var(--pad);
+    padding:0;
+    min-height:clamp(260px, 52vh, 420px);
   }
 
-  /* Drei gewünschte Hero-Bilder: vollständiger, weiter wirkender Bildausschnitt */
+  .hero-slider{
+    inset:0;
+  }
+
   .hero-slider a:nth-child(1) .hero-slide,
   .hero-slider a:nth-child(2) .hero-slide,
-  .hero-slider a:nth-child(4) .hero-slide {
-    object-fit: contain;
-    object-position: center center;
-    background: #fff;
+  .hero-slider a:nth-child(4) .hero-slide{
+    object-fit:contain;
+    object-position:center;
+    background:#fff;
   }
 }
 
