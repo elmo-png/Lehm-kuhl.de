@@ -1293,14 +1293,19 @@
 }
 
 @media (max-width: 720px) {
-  .article-hero {
-    height: 320px;
-  }
-  .article-hero-content {
-    padding: 24px;
-  }
   .iran-header {
     margin-top: -2em;
+  }
+
+  .iran-header.article-hero {
+    aspect-ratio: 3 / 5;
+    height: auto;
+  }
+
+  .iran-header.article-hero .article-hero-content {
+    padding: 24px;
+    justify-content: flex-end;
+    padding-bottom: 32px;
   }
   .article-hero-title {
     font-size: clamp(20px, 3.5vw, 28px);
