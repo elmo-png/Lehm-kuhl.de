@@ -194,6 +194,20 @@
       inset:0;
     }
   }
+  @media (max-width: 720px) {
+  .hero {
+    min-height: clamp(260px, 52vh, 420px);
+  }
+
+  /* Drei gewünschte Hero-Bilder: vollständiger, weiter wirkender Bildausschnitt */
+  .hero-slider a:nth-child(1) .hero-slide,
+  .hero-slider a:nth-child(2) .hero-slide,
+  .hero-slider a:nth-child(4) .hero-slide {
+    object-fit: contain;
+    object-position: center center;
+    background: #fff;
+  }
+}
 
   /* Startseite: vertikaler Rhythmus zwischen Vorstellung, Hero und Fokus-Cards */
   .page-home main > .content:first-child {
