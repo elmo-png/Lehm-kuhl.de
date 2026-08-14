@@ -1282,7 +1282,7 @@
     height: 380px;
   .work-video-play::before {
     border-width: 14px 0 14px 22px;
-    margin-left: 0px;
+    margin-left: 10px;
   }
   }
   .article-hero-content {
@@ -1317,11 +1317,11 @@
   .article-hero-title {
     font-size: clamp(20px, 3.5vw, 28px);
     max-width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .article-hero-excerpt {
     max-width: 100%;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .page-arbeiten-schreiben .video-banner-caption h3 {
